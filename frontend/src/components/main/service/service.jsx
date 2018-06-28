@@ -11,8 +11,8 @@ class DataService {
             console.log(error);
         });
     }
-    static createData(comment, callback) {
-        axios.post('/api/data/', comment).then( response => {
+    static createData(url, callback) {
+        axios.post('/api/data/', url).then( response => {
             callback && callback(response);
         }).catch( error => {
             console.log(error);

@@ -1,6 +1,8 @@
 import React from 'react';
 import {withStyles} from "@material-ui/core/styles/index";
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Service from '../service/service'
 
 const styles = theme => ({
     root: {
@@ -46,6 +48,13 @@ const styles = theme => ({
     bootstrapFormLabel: {
         fontSize: 18,
     },
+    button: {
+        marginTop: 10,
+        width: 211,
+        height: 50,
+        borderColor: '#80bdff',
+        color: '#3F47BE',
+    }
 
 
 });
@@ -64,6 +73,19 @@ class SearchMainComponent extends React.Component {
         });
         console.log(this.state.searchItem)
     };
+    sendData = () => {
+        let urlData = {
+            url: this.state.searchItem,
+            name: '/',
+            product_id: '//',
+            rate: 0,
+            amazon_rate: 0
+        };
+
+        Service.createData(urlData, () => {
+            console.log(urlData + "JJJ")
+        });
+    };
 
     render() {
         const {classes, theme} = this.props;
@@ -74,7 +96,7 @@ class SearchMainComponent extends React.Component {
                     <h1>Put The Link To The Item :D</h1>
                 </div>
                 <div>
-                <form>
+                    <form>
                         <TextField
                             id="searchItem"
                             name={"searchItem"}
@@ -96,6 +118,11 @@ class SearchMainComponent extends React.Component {
                             margin="normal"
                         />
                     </form>
+                </div>
+                <div>
+                    <Button variant="outlined" color="primary" className={classes.button} onClick={this.sendData}>
+                        Rate It
+                    </Button>
                 </div>
 
 
