@@ -6,7 +6,7 @@ import Service from '../service/service'
 
 const styles = theme => ({
     root: {
-        marginTop: 200,
+        marginTop: 50,
         marginLeft: 100,
         marginRight: 100,
         fontSize: 30,
@@ -79,7 +79,8 @@ class SearchMainComponent extends React.Component {
             name: '/',
             product_id: '//',
             rate: 0,
-            amazon_rate: 0
+            amazon_rate: 0,
+            image_url: this.state.searchItem
         };
 
         Service.createData(urlData, () => {
@@ -93,7 +94,7 @@ class SearchMainComponent extends React.Component {
         return (
             <div className={classes.root}>
                 <div>
-                    <h1>Put The Link To The Item :D</h1>
+                    <h1>Paste The Link Here</h1>
                 </div>
                 <div>
                     <form>

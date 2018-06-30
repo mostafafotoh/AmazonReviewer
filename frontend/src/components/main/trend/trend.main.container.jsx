@@ -1,5 +1,7 @@
 import React from 'react';
 import TrendMainComponent from './trend.component'
+import GuttersGrid from './test'
+
 import {withStyles} from "@material-ui/core/styles/index";
 
 const styles = theme => ({
@@ -25,6 +27,7 @@ class TrendMainContainer extends React.Component {
                     <h1>Trending Now</h1>
                 </div>
                 <TrendMainComponent/>
+                {/*<GuttersGrid/>*/}
 
             </div>
         );

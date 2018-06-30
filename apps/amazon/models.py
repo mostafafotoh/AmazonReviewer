@@ -12,4 +12,5 @@ class Product(models.Model):
     url = models.URLField()
     rate = models.FloatField()
     amazon_rate = models.FloatField()
+    image_url = models.URLField(max_length=900,default=None)
     date = models.DateTimeField(default=datetime.datetime.now, blank=True)

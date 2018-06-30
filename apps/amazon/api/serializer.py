@@ -10,14 +10,15 @@ class ProductSetSerializer(serializers.HyperlinkedModelSerializer):
     url = serializers.URLField()
     rate = serializers.FloatField()
     amazon_rate = serializers.FloatField()
+    image_url = serializers.URLField(required=False,default=None)
     date = serializers.DateTimeField(required=False)
 
     class Meta:
         model = Product
-        fields = ('name', 'product_id', 'url', 'rate', 'amazon_rate', 'date')
+        fields = ('name', 'product_id', 'url', 'rate', 'amazon_rate', 'image_url', 'date')
 
     def create(self, validated_data):
-        rate, url_id, name, url, product_rate = scrap_analyze(url=validated_data['url'])
+        rate, url_id, name, url, product_rate, image_url = scrap_analyze(url=validated_data['url'])
         validated_data = {'name': name, 'product_id': url_id, 'url': url, 'rate': float(rate),
-                          'amazon_rate': float(product_rate)}
+                          'amazon_rate': float(product_rate), 'image_url': image_url}
         return super().create(validated_data)
